@@ -25,7 +25,8 @@ export class BookFilter extends React.Component {
     const {title, minPrice, maxPrice } = this.state.filterBy;
     return (
       <form className='book-filter' onSubmit={this.onFilter}>
-        <label htmlFor='by-title'>Bytitle</label>
+        <p>Filter By:</p>
+        <label htmlFor='by-title'>Title</label>
         <input
           name='title'
           id='by-title'
@@ -34,21 +35,21 @@ export class BookFilter extends React.Component {
           value={title}
           onChange={this.handleChange}
         />
-        <label htmlFor='min-speed'>Min speed</label>
+        <label htmlFor='min-price'>Minimum Price</label>
         <input
           name='minPrice'
-          id='min-speed'
+          id='min-price'
           type='number'
-          placeholder='Min Speed'
+          placeholder='Minimum Price'
           value={minPrice}
           onChange={this.handleChange}
         />
-        <label htmlFor='max-speed'>Max speed</label>
+        <label htmlFor='max-price'>Maximum Price</label>
         <input
           name='maxPrice'
-          id='max-speed'
+          id='max-price'
           type='number'
-          placeholder='Max Speed'
+          placeholder='Maximum Price'
           value={maxPrice}
           onChange={this.handleChange}
         />

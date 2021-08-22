@@ -1,20 +1,135 @@
 body {
-    background-color: wheat;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.car-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-.car-preview {
-    width: 250px;
-    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-    padding: 5px;
-    text-align: center;
-}
-.car-preview img {
-    width: 120px;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/*  */
+h1, h2, h3, p {
+    margin: 0;
+    color: rgb(26, 26, 26)
+}
+
+img {
+    max-width: 100%;
+}
+
+.main-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.book-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.book-filter { 
+    display: flex;
+    width:100%;
+    padding:20px 0;
+    justify-content: space-around;
+}
+.book-filter input {
+    width:20%;
+}
+
+.book-app .logo {
+    align-self: flex-start;
+    padding: 20px 0;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 30px;
+    justify-content: center;
+}
+
+.book-preview {
+    width: 250px;
+    box-shadow: rgba(67, 71, 85, 0.548) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.book-title {
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.book-price {
+    margin-bottom: 10px;
+}
+.book-details .details-img { 
+    position: relative;
+    display: flex;
+    width:30%;
+}
+.book-details .reading-type { 
+    position:absolute;
+    top:5%;
+    margin-inline-start:5%;
+    color:white;
+    background-color:rgb(71, 74, 255);
+    padding: 5px ;
+    border-radius:.25em;
+}
+.book-details .reading-type.sale { 
+    bottom:5%;
+    top:unset;
+    color:black;
+    font-size:2rem;
+    font-weight: lighter;
+    background-color:gold;
+}
+.book-details {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+.book-details .more-details { 
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    width:50%;
+    justify-self: flex-start;
+}
+.book-details .title {
+    font-size: 2.5rem;
+    text-transform: capitalize;
+
+}
+
+.book-details .sub-title {
+    font-size: 2rem;
+    color: rgb(117, 117, 117);
+}
+
+.book-details .sub-title::first-letter {
+    text-transform: capitalize;
+}
+
+.book-details .price span.sale {
+    color: rgb(49, 39, 39);
+    padding: 2px 5px;
+    background-color: gold;
+}
+
+.book-details .categories {
+    display: flex;
+    gap:10px;
+
+}
+.book-details .categories .category {
+    background-color: rgb(158, 158, 158);
+    color:white;
+    padding:2px 5px;
+    border-radius: .25em;
+}
+.green { 
+    color:green;
+}
+.red { 
+    color:red;
+}

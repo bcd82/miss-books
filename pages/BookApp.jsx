@@ -36,14 +36,13 @@ export class BookApp extends React.Component {
 
   render() {
     const { books, selectedBook } = this.state;
-    if (!books.length) return <div>Loading...</div>;
     return (
-      <section className="book-app">
-        <h2>Books Project</h2>
+      <section className="book-app main-layout">
+        <h1 className="logo">Miss Books</h1>
         {!selectedBook && (
           <React.Fragment>
             <BookFilter onSetFilter={this.onSetFilter} />
-            <BookList books={books} onSelectBook={this.onSelectBook} />
+            { books.length && <BookList books={books} onSelectBook={this.onSelectBook} />}
           </React.Fragment>
         )}
         {selectedBook && (

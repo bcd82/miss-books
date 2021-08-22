@@ -17,9 +17,9 @@ const BOOKS = [
       "title": "metus hendrerit",
       "subtitle": "mi est eros convallis auctor arcu dapibus himenaeos",
       "authors": [
-        "Barbara Cartland"
+        "Barbara Cartland",
       ],
-      "publishedDate": 1999,
+      "publishedDate": 2021,
       "description": "placerat nisi sodales suscipit tellus tincidunt mauris elit sit luctus interdum ad dictum platea vehicula conubia fermentum habitasse congue suspendisse",
       "pageCount": 713,
       "categories": [
@@ -462,7 +462,7 @@ function query(filterBy) {
         let {title, minPrice, maxPrice} = filterBy
         minPrice = minPrice ? minPrice : 0
         maxPrice = maxPrice ? maxPrice : Infinity 
-        const booksToShow = gBooks.filter(book => book.title.includes(title) && book.speed >= minPrice && book.speed <= maxPrice)
+        const booksToShow = gBooks.filter(book => book.title.includes(title) && book.listPrice.amount >= minPrice && book.listPrice.amount<= maxPrice)
         return Promise.resolve(booksToShow)
     }
     return Promise.resolve(gBooks)
@@ -471,14 +471,25 @@ function query(filterBy) {
 function _getBooks() {
     let books = storageService.loadFromStorage(KEY)
     if (!books || !books.length) {
-        // books = JSON.parse(booksUrl)
-        // console.log(books)
+
         books = BOOKS;
     }
     gBooks = books;
     console.log(books)
     _saveBooksToStorage();
 }
+
+function getBookById(bookId) {
+  var book = gBooks.find(function (book) {
+    return bookId === book.id
+  })
+  return book
+}
+
+function _saveBooksToStorage() {
+  storageService.saveToStorage(KEY, gBooks)
+}
+
 // function deleteBook(bookId) {
     //     var bookIdx = gBooks.findIndex(function (book) {
         //         return bookId === book.id
@@ -493,13 +504,6 @@ function _getBooks() {
 //     _saveBooksToStorage();
 // }
 
-function getBookById(bookId) {
-    var book = gBooks.find(function (book) {
-        return bookId === book.id
-    })
-    return book
-}
-
 // function _createBook(title, speed) {
 //     if (!speed) speed = utilService.getRandomIntInclusive(1, 200)
 //     return {
@@ -510,7 +514,3 @@ function getBookById(bookId) {
 //     }
 // }
 
-
-function _saveBooksToStorage() {
-    storageService.saveToStorage(KEY, gBooks)
-}
