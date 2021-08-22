@@ -31,7 +31,7 @@ export class BookFilter extends React.Component {
           name='title'
           id='by-title'
           type='text'
-          placeholder='Vendor'
+          placeholder='Book Title'
           value={title}
           onChange={this.handleChange}
         />

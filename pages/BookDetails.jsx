@@ -5,8 +5,11 @@ export class BookDetails extends React.Component {
     isLongTxtShown: false,
   };
 
-  formattedPrice = "";
+  onToggleTxt = () => {
+    this.setState({ isLongTxtShown: !this.state.isLongTxtShown });
+  };
 
+  formattedPrice = "";
   render() {
     const { book, onBack } = this.props;
     switch (book.listPrice.currencyCode) {
@@ -38,11 +41,20 @@ export class BookDetails extends React.Component {
     return (
       <section className="book-details">
         <div className="details-img">
-        {book.listPrice.isOnSale && <p className=" reading-type sale">ON-SALE</p>}
-        {book.pageCount > 500 && <p className="reading-type">Long Reading</p>}
-        {(book.pageCount >= 200 && book.pageCount < 500) && <p className="reading-type">Descent Reading</p>}
-        {(book.pageCount <= 100 ) && <p className="reading-type">Light Reading</p>}
-        <img src={book.thumbnail}></img>
+          {book.listPrice.isOnSale && (
+            <p className=" reading-type sale">ON-SALE</p>
+          )}
+          {book.pageCount > 500 && <p className="reading-type">Long Reading</p>}
+          {book.pageCount >= 200 && book.pageCount < 500 && (
+            <p className="reading-type">Descent Reading</p>
+          )}
+          {book.pageCount <= 100 && (
+            <p className="reading-type">Light Reading</p>
+          )}
+          <img src={book.thumbnail}></img>
+          <button className="back-btn" onClick={onBack}>
+          Back
+        </button>
         </div>
         <div className="more-details">
           <h1 className="title">{book.title}</h1>
@@ -78,9 +90,10 @@ export class BookDetails extends React.Component {
           </div>
           <LongText
             text={book.description}
-            isLongTxtShown={this.isLongTxtShown}
+            isLongTxtShown={this.state.isLongTxtShown}
+            onClickMore={this.onToggleTxt}
           />
-          <button onClick={onBack}>Go Back</button>
+
         </div>
       </section>
     );

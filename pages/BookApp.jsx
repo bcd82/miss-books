@@ -38,7 +38,7 @@ export class BookApp extends React.Component {
     const { books, selectedBook } = this.state;
     return (
       <section className="book-app main-layout">
-        <h1 className="logo">Miss Books</h1>
+        <h1 className="logo">Miss Book</h1>
         {!selectedBook && (
           <React.Fragment>
             <BookFilter onSetFilter={this.onSetFilter} />
