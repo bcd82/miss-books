@@ -11,7 +11,7 @@ export const bookService = {
 }
 
 const KEY = 'booksDb';
-const booksJSON = [
+const BOOKS = [
     {
       "id": "OXeMG8wNskc",
       "title": "metus hendrerit",
@@ -460,8 +460,8 @@ _getBooks();
 function query(filterBy) {
     if(filterBy) {
         let {title, minPrice, maxPrice} = filterBy
-        maxPrice = maxPrice ? maxPrice : Infinity 
         minPrice = minPrice ? minPrice : 0
+        maxPrice = maxPrice ? maxPrice : Infinity 
         const booksToShow = gBooks.filter(book => book.title.includes(title) && book.speed >= minPrice && book.speed <= maxPrice)
         return Promise.resolve(booksToShow)
     }
@@ -473,7 +473,7 @@ function _getBooks() {
     if (!books || !books.length) {
         // books = JSON.parse(booksUrl)
         // console.log(books)
-        books = booksJSON;
+        books = BOOKS;
     }
     gBooks = books;
     console.log(books)
