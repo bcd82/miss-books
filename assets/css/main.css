@@ -235,6 +235,7 @@ img {
     }
     .book-details {
         padding: 40px;
+        gap:80px;
     }
     .book-details .more-details { 
         width: 50%;
