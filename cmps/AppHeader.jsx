@@ -8,7 +8,7 @@ const { NavLink, withRouter } = ReactRouterDOM;
         props.history.push('/')
       }}>Miss Book</h1>
       <nav>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to='/' exact={true}>Home</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/book">Books</NavLink>
       </nav>
