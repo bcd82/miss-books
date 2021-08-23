@@ -28,6 +28,11 @@ export class BookDetails extends React.Component {
     this.setState(prevState => ({book:{...prevState.book,reviews:newReviews}}))
 }
 
+onDeleteReview = (reviewIdx,bookId) => {
+  console.log(reviewIdx,bookId)
+  bookService.deleteReview(reviewIdx,bookId);
+}
+
 
   loadBook = () => {
     const id = this.props.match.params.bookId;
@@ -138,7 +143,7 @@ export class BookDetails extends React.Component {
             <p> No reviews yet..</p>
           ) : (
             book.reviews.map((review, idx) => (
-              <Review review={review} key={idx} />
+              <Review review={review} idx={idx} key={idx} bookId={book.id} onDelete={this.onDeleteReview}/>
             ))
           )}
           </div>
