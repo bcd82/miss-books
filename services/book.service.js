@@ -480,10 +480,10 @@ function _getBooks() {
 }
 
 function getBookById(bookId) {
-  var book = gBooks.find(function (book) {
+  const book = gBooks.find(function (book) {
     return bookId === book.id
   })
-  return book
+  return Promise.resolve(book)
 }
 
 function _saveBooksToStorage() {
