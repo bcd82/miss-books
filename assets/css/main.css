@@ -20,7 +20,9 @@ h1, h2, h3, p {
 img {
     max-width: 100%;
 }
-
+input::placeholder {
+    color:rgb(177, 177, 177);
+}
 .main-layout {
     max-width: 1200px;
     margin: 0 auto;
@@ -228,6 +230,50 @@ img {
     box-shadow: 0 0em .2em rgba(0, 0, 0, 0.637);
 
 }
+.add-review-box { 
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+
+}
+.add-review-box .add-review{ 
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    
+}
+.add-review-box .add-review form{ 
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    gap:5px;
+}
+.add-review-box .selection { 
+    display: flex;
+    gap:20px;
+    padding: 10px 0;
+}
+textarea { 
+    resize: none;
+}
+.reviews-container { 
+    border-top:2px solid rgb(17, 107, 143);
+    width:100%;
+    overflow-y:scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    padding:30px 10px;
+}
+ .review{ 
+    display:flex;
+    flex-direction: column;
+    outline:1px solid gray;
+    padding:10px;
+    width:60%;
+}
 
 .green {
     color: green;
@@ -258,28 +304,7 @@ img {
         width: 30%;
         font-size: 1.2rem;
     }
-    .reviews-area { 
-        width:20%;
-    }
-    .reviews-area .reviews-box{ 
-        display: flex;
-        flex-direction: column;
-        width:100%;
-    }
-    .reviews-area .reviews-box form{ 
-        display: flex;
-        flex-direction: column;
-        width:100%;
-        gap:5px;
-    }
-    .reviews-area .selection { 
-        display: flex;
-        gap:20px;
-        padding: 10px 0;
-    }
-     textarea { 
-        resize: none;
-    }
+
     .book-details .title {
         font-size: 2.5rem;
     }
@@ -287,5 +312,7 @@ img {
         font-size: 2rem;
     }
 
-    
+    .add-review-box { 
+        width:20%;
+    }
 }

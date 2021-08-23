@@ -128,9 +128,12 @@ export class BookDetails extends React.Component {
             onClickMore={this.onToggleTxt}
           />
         </div>
-        <div className="reviews-area">
+        <div className="add-review-box">
           <ReviewAdd book={book}
           onSubmit={this.onAddReview} />
+      
+        </div>
+        <div className="reviews-container">
           {( !book.reviews||!book.reviews.length )? (
             <p> No reviews yet..</p>
           ) : (
@@ -138,7 +141,7 @@ export class BookDetails extends React.Component {
               <Review review={review} key={idx} />
             ))
           )}
-        </div>
+          </div>
       </section>
     );
   }

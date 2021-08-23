@@ -477,11 +477,11 @@ function getBookById(bookId) {
 }
 
 function addReview(bookId,review) {
+  if(review.txt === '') review.txt = 'No Opinion' 
   getBookById(bookId)
   .then((book)=>{
     book.reviews ? book.reviews.unshift(review) : book.reviews = [review];
     _saveBooksToStorage()
-    console.log(gBooks)
   })
 }
 function _getBooks() {
