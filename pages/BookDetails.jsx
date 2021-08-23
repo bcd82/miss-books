@@ -2,30 +2,51 @@ import { LongText } from "../cmps/LongText.jsx";
 import { bookService } from "../services/book.service.js";
 import { utilService } from "../services/util.service.js";
 import { ReviewAdd } from "../cmps/ReviewAdd.jsx";
+import { Review } from "../cmps/Review.jsx";
 
 export class BookDetails extends React.Component {
   state = {
     isLongTxtShown: false,
-    book : null
+    book: null,
   };
 
-  componentDidMount = () =>{
-    this.loadBook()
-  }
-  loadBook = () =>{
-    const id = this.props.match.params.bookId
-    bookService.getBookById(id)
-      .then(book => {
-        this.setState({ book })
-      })
-  }
+  componentDidMount = () => {
+    this.loadBook();
+  };
+
+  
+  onAddReview = (ev,review) =>{
+    ev.preventDefault()
+    bookService.addReview(this.state.book.id,review)
+    let newReviews
+    if(!this.state.book.reviews) { 
+      newReviews =[]
+    } else { 
+      newReviews = this.state.book.reviews.slice()
+    }
+    newReviews.unshift(review)
+    this.setState(prevState => ({book:{...prevState.book,reviews:newReviews}}))
+}
+
+
+  loadBook = () => {
+    const id = this.props.match.params.bookId;
+    bookService.getBookById(id).then((book) => {
+      this.setState({ book })
+      if(book.reviews)
+        this.setState({reviews:book.reviews})
+      ;
+    });
+  
+  };
+
   onToggleTxt = () => {
     this.setState({ isLongTxtShown: !this.state.isLongTxtShown });
   };
 
   onBack = () => {
-    this.props.history.push('/book')
-  }
+    this.props.history.push("/book");
+  };
 
   getLaguage = () => {
     switch (this.state.book.language) {
@@ -58,7 +79,7 @@ export class BookDetails extends React.Component {
 
   render() {
     const { book } = this.state;
-    if(!book) return <h1>Loading</h1>
+    if (!book) return <h1>Loading</h1>;
     const formattedPrice = utilService.getPriceCurrency(book);
 
     return (
@@ -108,7 +129,15 @@ export class BookDetails extends React.Component {
           />
         </div>
         <div className="reviews-area">
-          <ReviewAdd book={book}/>
+          <ReviewAdd book={book}
+          onSubmit={this.onAddReview} />
+          {( !book.reviews||!book.reviews.length )? (
+            <p> No reviews yet..</p>
+          ) : (
+            book.reviews.map((review, idx) => (
+              <Review review={review} key={idx} />
+            ))
+          )}
         </div>
       </section>
     );

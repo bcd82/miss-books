@@ -6,6 +6,7 @@ export const bookService = {
     query,
     // addBook,
     // deleteBook,
+    addReview,
     getBookById,
     // updateBook
 }
@@ -468,6 +469,21 @@ function query(filterBy) {
     return Promise.resolve(gBooks)
 }
 
+function getBookById(bookId) {
+  const book = gBooks.find(function (book) {
+    return bookId === book.id
+  })
+  return Promise.resolve(book)
+}
+
+function addReview(bookId,review) {
+  getBookById(bookId)
+  .then((book)=>{
+    book.reviews ? book.reviews.unshift(review) : book.reviews = [review];
+    _saveBooksToStorage()
+    console.log(gBooks)
+  })
+}
 function _getBooks() {
     let books = storageService.loadFromStorage(KEY)
     if (!books || !books.length) {
@@ -479,16 +495,13 @@ function _getBooks() {
     _saveBooksToStorage();
 }
 
-function getBookById(bookId) {
-  const book = gBooks.find(function (book) {
-    return bookId === book.id
-  })
-  return Promise.resolve(book)
-}
 
 function _saveBooksToStorage() {
   storageService.saveToStorage(KEY, gBooks)
 }
+
+
+
 
 // function deleteBook(bookId) {
     //     var bookIdx = gBooks.findIndex(function (book) {
@@ -504,13 +517,4 @@ function _saveBooksToStorage() {
 //     _saveBooksToStorage();
 // }
 
-// function _createBook(title, speed) {
-//     if (!speed) speed = utilService.getRandomIntInclusive(1, 200)
-//     return {
-//         id: utilService.makeId(),
-//         title,
-//         speed,
-//         desc: utilService.makeLorem()
-//     }
-// }
 

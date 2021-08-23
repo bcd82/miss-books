@@ -264,6 +264,21 @@ img {
     .reviews-area .reviews-box{ 
         display: flex;
         flex-direction: column;
+        width:100%;
+    }
+    .reviews-area .reviews-box form{ 
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        gap:5px;
+    }
+    .reviews-area .selection { 
+        display: flex;
+        gap:20px;
+        padding: 10px 0;
+    }
+     textarea { 
+        resize: none;
     }
     .book-details .title {
         font-size: 2.5rem;
