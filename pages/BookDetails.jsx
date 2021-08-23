@@ -15,13 +15,16 @@ export class BookDetails extends React.Component {
     const id = this.props.match.params.bookId
     bookService.getBookById(id)
       .then(book => {
-        // if (!book) this.props.history.push('/')
         this.setState({ book })
       })
   }
   onToggleTxt = () => {
     this.setState({ isLongTxtShown: !this.state.isLongTxtShown });
   };
+
+  onBack = () => {
+    this.props.history.push('/book')
+  }
 
   getLaguage = () => {
     switch (this.state.book.language) {
@@ -67,9 +70,9 @@ export class BookDetails extends React.Component {
             <p className="reading-type">{this.getReadingType()}</p>
           )}
           <img src={book.thumbnail}></img>
-          {/* <button className="back-btn" onClick={onBack}>
+          <button className="back-btn" onClick={this.onBack}>
             Back
-          </button> */}
+          </button>
         </div>
         <div className="more-details">
           <h1 className="title">{book.title}</h1>
