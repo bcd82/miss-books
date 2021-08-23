@@ -5,7 +5,7 @@ import { BookDetails } from "./BookDetails.jsx";
 
 export class BookApp extends React.Component {
   state = {
-    books: [],
+    books: null,
     filterBy: null,
     selectedBook: null,
   };
@@ -36,6 +36,7 @@ export class BookApp extends React.Component {
 
   render() {
     const { books, selectedBook } = this.state;
+    if(!books) return <div>Loading...</div>
     return (
       <section className="book-app main-layout">
         <h1 className="logo">Miss Book</h1>

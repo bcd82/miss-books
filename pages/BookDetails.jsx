@@ -1,4 +1,5 @@
 import { LongText } from "../cmps/LongText.jsx";
+import { utilService } from "../services/util.service.js";
 
 export class BookDetails extends React.Component {
   state = {
@@ -9,34 +10,30 @@ export class BookDetails extends React.Component {
     this.setState({ isLongTxtShown: !this.state.isLongTxtShown });
   };
 
-  formattedPrice = "";
+  getLaguage = () => {
+    switch (this.props.book.language) {
+      case "he":
+        return "Hebrew";
+      case "sp":
+        return "Spanish";
+      default:
+        return "English";
+    }
+  };
+
+  getPriceClass = () => {
+    if (this.props.book.listPrice.amount >= 150) return "red";
+    if (this.props.book.listPrice.amount <= 20) return "green";
+  };
+
+  getTextForBookYears = () => {
+    const thisYear = new Date(Date.now()).getFullYear();
+    if (thisYear - this.props.book.publishedDate >= 10) return "Veteran Book";
+    if (thisYear - this.props.book.publishedDate <= 1) return "New Book";
+  };
   render() {
     const { book, onBack } = this.props;
-    switch (book.listPrice.currencyCode) {
-      case "ILS":
-        this.formattedPrice = ` ${book.listPrice.amount}₪`;
-        break;
-      case "EUR":
-        this.formattedPrice = `€${book.listPrice.amount}`;
-        break;
-      default:
-        this.formattedPrice = `$${book.listPrice.amount}`;
-        break;
-    }
-
-    let formattedLang = "";
-    switch (book.language) {
-      case "he":
-        formattedLang = "Hebrew";
-        break;
-      case "sp":
-        formattedLang = `Spanish`;
-        break;
-      default:
-        formattedLang = `English`;
-        break;
-    }
-    const thisYear = new Date(Date.now()).getFullYear();
+    const formattedPrice = utilService.getPriceCurrency(book);
 
     return (
       <section className="book-details">
@@ -53,8 +50,8 @@ export class BookDetails extends React.Component {
           )}
           <img src={book.thumbnail}></img>
           <button className="back-btn" onClick={onBack}>
-          Back
-        </button>
+            Back
+          </button>
         </div>
         <div className="more-details">
           <h1 className="title">{book.title}</h1>
@@ -66,19 +63,13 @@ export class BookDetails extends React.Component {
             })}
           </p>
           <p className="publish-date">
-            Year: {book.publishedDate}{" "}
-            {thisYear - book.publishedDate >= 10 && "Veteran Book"}
-            {thisYear - book.publishedDate <= 1 && "New Book"}
+            Year: {book.publishedDate} {this.getTextForBookYears()}
           </p>
-          <p
-            className={`price ${book.listPrice.amount >= 150 && "red"} ${
-              book.listPrice.amount <= 20 && "green"
-            }`}
-          >
-            Price: {this.formattedPrice}{" "}
+          <p className={`price ${this.getPriceClass()}`}>
+            Price: {formattedPrice}{" "}
             {book.listPrice.isOnSale && <span className="sale">ON SALE</span>}
           </p>
-          <p>Language: {formattedLang}</p>
+          <p>Language: {this.getLaguage()}</p>
           <p>Length: {book.pageCount} pages</p>
           <div className="categories">
             Categories :
@@ -93,7 +84,6 @@ export class BookDetails extends React.Component {
             isLongTxtShown={this.state.isLongTxtShown}
             onClickMore={this.onToggleTxt}
           />
-
         </div>
       </section>
     );

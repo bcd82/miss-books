@@ -1,7 +1,7 @@
 export class BookFilter extends React.Component {
   state = {
     filterBy: {
-     title: '',
+      title: '',
       minPrice: '',
       maxPrice: '',
     },
@@ -11,45 +11,48 @@ export class BookFilter extends React.Component {
     const field = ev.target.name;
     const value =
       ev.target.type === 'number' ? +ev.target.value : ev.target.value;
-    this.setState({ filterBy: { ...this.state.filterBy, [field]: value } }, () => {
-        this.props.onSetFilter(this.state.filterBy)
-    } );
+    this.setState(
+      { filterBy: { ...this.state.filterBy, [field]: value } },
+      () => {
+        this.props.onSetFilter(this.state.filterBy);
+      }
+    );
   };
 
   onFilter = (ev) => {
     ev.preventDefault();
-    this.props.onSetFilter(this.state.filterBy)
+    this.props.onSetFilter(this.state.filterBy);
   };
 
   render() {
-    const {title, minPrice, maxPrice } = this.state.filterBy;
+    const { title, minPrice, maxPrice } = this.state.filterBy;
     return (
-      <form className='book-filter' onSubmit={this.onFilter}>
+      <form className="book-filter" onSubmit={this.onFilter}>
         <p>Filter By:</p>
-        <label htmlFor='by-title'>Title</label>
+        <label htmlFor="by-title">Title</label>
         <input
-          name='title'
-          id='by-title'
-          type='text'
-          placeholder='Book Title'
+          name="title"
+          id="by-title"
+          type="text"
+          placeholder="Book Title"
           value={title}
           onChange={this.handleChange}
         />
-        <label htmlFor='min-price'>Minimum Price</label>
+        <label htmlFor="min-price">Minimum Price</label>
         <input
-          name='minPrice'
-          id='min-price'
-          type='number'
-          placeholder='Minimum Price'
+          name="minPrice"
+          id="min-price"
+          type="number"
+          placeholder="Minimum Price"
           value={minPrice}
           onChange={this.handleChange}
         />
-        <label htmlFor='max-price'>Maximum Price</label>
+        <label htmlFor="max-price">Maximum Price</label>
         <input
-          name='maxPrice'
-          id='max-price'
-          type='number'
-          placeholder='Maximum Price'
+          name="maxPrice"
+          id="max-price"
+          type="number"
+          placeholder="Maximum Price"
           value={maxPrice}
           onChange={this.handleChange}
         />
