@@ -1,4 +1,3 @@
-import { bookService } from "../services/book.service.js";
 
 export class ReviewAdd extends React.Component {
   state = {
@@ -14,13 +13,7 @@ export class ReviewAdd extends React.Component {
     const field = target.name
     const value = target.type === 'number' ? +target.value : target.value
     this.setState(prevState => ({ review: { ...prevState.review, [field]: value } }))
-
   };
-
-//   onAddReview = (ev) =>{
-//       ev.preventDefault()
-//       bookService.addReview(this.props.book.id,this.state.review)
-//   }
 
   render() {
     const { name, rate, txt, readDate } = this.state.review;

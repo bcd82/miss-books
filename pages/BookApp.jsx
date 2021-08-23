@@ -26,12 +26,6 @@ export class BookApp extends React.Component {
     this.setState({ selectedBook: book });
   };
 
-  // onDeleteBook = (bookId) => {
-  //   bookService.deleteBook(bookId);
-  //   this.onSelectBook(null);
-  //   this.loadBooks();
-  // };
-
   render() {
     const { books } = this.state;
     if(!books) return <div>Loading...</div>
