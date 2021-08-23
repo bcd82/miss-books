@@ -1,6 +1,7 @@
 import { LongText } from "../cmps/LongText.jsx";
 import { bookService } from "../services/book.service.js";
 import { utilService } from "../services/util.service.js";
+import { ReviewAdd } from "../cmps/ReviewAdd.jsx";
 
 export class BookDetails extends React.Component {
   state = {
@@ -61,7 +62,7 @@ export class BookDetails extends React.Component {
     const formattedPrice = utilService.getPriceCurrency(book);
 
     return (
-      <section className="book-details">
+      <section className="book-details main-layout">
         <div className="details-img">
           {book.listPrice.isOnSale && (
             <p className=" reading-type sale">ON-SALE</p>
@@ -105,6 +106,9 @@ export class BookDetails extends React.Component {
             isLongTxtShown={this.state.isLongTxtShown}
             onClickMore={this.onToggleTxt}
           />
+        </div>
+        <div className="reviews-area">
+          <ReviewAdd book={book}/>
         </div>
       </section>
     );

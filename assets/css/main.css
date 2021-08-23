@@ -255,8 +255,15 @@ img {
         gap:80px;
     }
     .book-details .more-details { 
-        width: 50%;
+        width: 30%;
         font-size: 1.2rem;
+    }
+    .reviews-area { 
+        width:20%;
+    }
+    .reviews-area .reviews-box{ 
+        display: flex;
+        flex-direction: column;
     }
     .book-details .title {
         font-size: 2.5rem;
