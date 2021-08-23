@@ -33,11 +33,12 @@ export class BookDetails extends React.Component {
   };
 
   getReadingType = () => {
-    if(this.props.book.pageCount >= 200 && this.props.book.pageCount < 500) return 'Descent Reading';
-    if(this.props.book.pageCount <= 100) return 'Light Reading';
-    return 'Long Reading';
-    }
-  
+    if (this.props.book.pageCount >= 200 && this.props.book.pageCount < 500)
+      return "Descent Reading";
+    if (this.props.book.pageCount <= 100) return "Light Reading";
+    return "Long Reading";
+  };
+
   render() {
     const { book, onBack } = this.props;
     const formattedPrice = utilService.getPriceCurrency(book);
@@ -48,7 +49,9 @@ export class BookDetails extends React.Component {
           {book.listPrice.isOnSale && (
             <p className=" reading-type sale">ON-SALE</p>
           )}
-           {!( book.pageCount >100 && book.pageCount < 200) &&  <p className="reading-type">{this.getReadingType()}</p>}
+          {!(book.pageCount > 100 && book.pageCount < 200) && (
+            <p className="reading-type">{this.getReadingType()}</p>
+          )}
           <img src={book.thumbnail}></img>
           <button className="back-btn" onClick={onBack}>
             Back
