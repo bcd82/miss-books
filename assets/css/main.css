@@ -34,6 +34,29 @@ img {
     padding: 0 20px;
 }
 
+.header { 
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:75px;
+}
+.header nav  { 
+    display:flex;
+    gap:10px;
+}
+.header nav > * { 
+    color:white;
+    font-size:1.5rem
+}
+
+.header .logo {
+    align-self: flex-start;
+    padding: 20px 0;
+    color: black;
+    font-size: 2.5rem;
+}
+
 .book-filter {
     display: flex;
     flex-direction: column;
@@ -43,7 +66,7 @@ img {
     padding: 20px 10px;
     justify-content: flex-start;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.753);
+        background-color: rgba(255, 255, 255, 0.753);
     margin-bottom: 10px;
     box-shadow: 0 .2em 0.25em rgba(0, 0, 0, 0.329);
     
@@ -58,12 +81,6 @@ img {
     padding:10px;
 }
 
-.book-app .logo {
-    align-self: flex-start;
-    padding: 20px 0;
-    color: black;
-    font-size: 2.5rem;
-}
 
 .book-list {
     display: flex;

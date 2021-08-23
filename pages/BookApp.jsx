@@ -1,13 +1,11 @@
 import { bookService } from "../services/book.service.js";
 import { BookList } from "../cmps/BookList.jsx";
 import { BookFilter } from "../cmps/BookFilter.jsx";
-import { BookDetails } from "./BookDetails.jsx";
 
 export class BookApp extends React.Component {
   state = {
     books: null,
     filterBy: null,
-    selectedBook: null,
   };
 
   componentDidMount() {
@@ -35,23 +33,12 @@ export class BookApp extends React.Component {
   // };
 
   render() {
-    const { books, selectedBook } = this.state;
+    const { books } = this.state;
     if(!books) return <div>Loading...</div>
     return (
       <section className="book-app main-layout">
-        <h1 className="logo">Miss Book</h1>
-        {!selectedBook && (
-          <React.Fragment>
             <BookFilter onSetFilter={this.onSetFilter} />
-            { books.length && <BookList books={books} onSelectBook={this.onSelectBook} />}
-          </React.Fragment>
-        )}
-        {selectedBook && (
-          <BookDetails
-            book={selectedBook}
-            onBack={() => this.onSelectBook(null)}
-          />
-        )}
+            <BookList books={books} onSelectBook={this.onSelectBook} />
       </section>
     );
   }
