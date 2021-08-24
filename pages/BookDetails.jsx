@@ -94,9 +94,11 @@ export class BookDetails extends React.Component {
           <p className="sub-title">{book.subtitle}</p>
           <p className="author">
             By:{" "}
-            {book.authors.map((author) => {
-              return author + " ";
-            })}
+            {!book.authors && 'Unknown'}
+            {book.authors &&
+              book.authors.map((author) => {
+                return author + " ";
+              })}
           </p>
           <p className="publish-date">
             Year: {book.publishedDate} {this.getTextForBookYears()}

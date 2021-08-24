@@ -487,11 +487,9 @@ function addReview(bookId, review) {
     }
     )
     return Promise.resolve()
-
 }
 
 function deleteReview(reviewIdx, bookId) {
-  console.log('i delete things')
   getBookById(bookId)
     .then(book => {
       book.reviews.splice(reviewIdx, 1);
@@ -507,7 +505,6 @@ function _getBooks() {
     books = BOOKS;
   }
   gBooks = books;
-  console.log(books)
   _saveBooksToStorage();
 }
 
@@ -517,7 +514,6 @@ function _saveBooksToStorage() {
 
 
 function addGoogleBook(book) {
-  console.log(book)
   const newBook = {
     id: utilService.makeId(),
     title: book.volumeInfo.title,
@@ -537,7 +533,6 @@ function addGoogleBook(book) {
   }
   gBooks.unshift(newBook);
   _saveBooksToStorage()
-  console.log(newBook)
   return Promise.resolve(newBook)
 }
 

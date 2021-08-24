@@ -1,6 +1,7 @@
 export const LongText = ({ text, isLongTxtShown, onClickMore }) => {
   let txtToDisplay = "";
   let isTxtLong = false;
+  if(!text) return '';
   if (text.length > 100) {
     isTxtLong = true;
     if (!isLongTxtShown) {
