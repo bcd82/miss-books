@@ -1,4 +1,6 @@
 import { eventBusService } from "../services/event.bus.service.js"
+const { Link } = ReactRouterDOM;
+
 
 export class UserMsg extends React.Component {
 
@@ -34,7 +36,8 @@ export class UserMsg extends React.Component {
     if (!msg) return <React.Fragment></React.Fragment>
     return (
       <section className="user-msg">
-        <h1>{msg}</h1>
+        <h1>{msg.txt}</h1>
+        <Link to={`/book/${msg.id}`}>check it out here</Link>
         <button onClick={this.onCloseMsg}>X</button>
       </section>
     )

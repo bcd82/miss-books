@@ -27,8 +27,8 @@ export class BookAdd extends React.Component {
   onAddBook = (idx) => {
     bookService.addGoogleBook(this.state.books[idx])
     .then((book)=> {
-      eventBusService.emit('user-msg',`${book.title} added to your books!`)
-      console.log('book added ', book.title)})
+      eventBusService.emit('user-msg',{txt:`${book.title} added to your books!`,id:book.id})
+     })
   };
   render() {
     const { books, query } = this.state;

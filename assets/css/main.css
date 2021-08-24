@@ -122,6 +122,9 @@ input::placeholder {
     filter: brightness(1);
     transition: filter .2s, box-shadow .2s;
 }
+.book-preview img {
+    width:80%;
+}
 
 .book-preview:hover {
     filter: brightness(1.4);

@@ -519,7 +519,7 @@ function addGoogleBook(book) {
   const newBook = {
     id: utilService.makeId(),
     title: book.volumeInfo.title,
-    subtitle: book.searchInfo.textSnippet,
+    subtitle: book.searchInfo.textSnippet ? book.searchInfo.textSnippet : '',
     authors: book.volumeInfo.authors,
     publishedDate: book.volumeInfo.publishedDate,
     description: book.volumeInfo.description,
