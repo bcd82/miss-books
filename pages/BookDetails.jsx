@@ -14,32 +14,23 @@ export class BookDetails extends React.Component {
     this.loadBook();
   };
 
-  
-  onAddReview = (ev,review) =>{
-    ev.preventDefault()
-    bookService.addReview(this.state.book.id,review)
-      this.loadBook()
+  onAddReview = (ev, review) => {
+    ev.preventDefault();
+    bookService
+      .addReview(this.state.book.id, review)
+      .then(() => this.loadBook());
+  };
 
-
-}
-
-onDeleteReview = (reviewIdx,bookId) => {
-  console.log(reviewIdx,bookId)
-  bookService.deleteReview(reviewIdx,bookId)
-    this.loadBook()
-  
-}
-
+  onDeleteReview = (reviewIdx, bookId) => {
+    bookService.deleteReview(reviewIdx, bookId).then(() => this.loadBook());
+  };
 
   loadBook = () => {
     const id = this.props.match.params.bookId;
     bookService.getBookById(id).then((book) => {
-      this.setState({ book })
-      if(book.reviews)
-        this.setState({reviews:book.reviews})
-      ;
+      this.setState({ book });
+      if (book.reviews) this.setState({ reviews: book.reviews });
     });
-  
   };
 
   onToggleTxt = () => {
@@ -131,19 +122,23 @@ onDeleteReview = (reviewIdx,bookId) => {
           />
         </div>
         <div className="add-review-box">
-          <ReviewAdd book={book}
-          onSubmit={this.onAddReview} />
-      
+          <ReviewAdd book={book} onSubmit={this.onAddReview} />
         </div>
         <div className="reviews-container">
-          {( !book.reviews||!book.reviews.length )? (
+          {!book.reviews || !book.reviews.length ? (
             <p> No reviews yet..</p>
           ) : (
             book.reviews.map((review, idx) => (
-              <Review review={review} idx={idx} key={idx} bookId={book.id} onDelete={this.onDeleteReview}/>
+              <Review
+                review={review}
+                idx={idx}
+                key={idx}
+                bookId={book.id}
+                onDelete={this.onDeleteReview}
+              />
             ))
           )}
-          </div>
+        </div>
       </section>
     );
   }

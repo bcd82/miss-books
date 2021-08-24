@@ -486,6 +486,8 @@ function addReview(bookId, review) {
       
     }
     )
+    return Promise.resolve()
+
 }
 
 function deleteReview(reviewIdx, bookId) {
@@ -495,7 +497,7 @@ function deleteReview(reviewIdx, bookId) {
       book.reviews.splice(reviewIdx, 1);
       _saveBooksToStorage();
     })
-    
+    return Promise.resolve()
 }
 
 function _getBooks() {
