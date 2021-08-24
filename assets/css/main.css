@@ -196,6 +196,12 @@ input::placeholder {
     font-size: 1.25rem;
     margin-bottom: 10px;
     color: rgb(117, 117, 117);
+    
+}
+
+.book-details b {
+    font-weight: inherit;
+
 }
 
 .book-details .sub-title::first-letter {
@@ -424,7 +430,7 @@ textarea {
         font-size: 2.5rem;
     }
     .book-details .sub-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     .add-review-box {
         width: 20%;

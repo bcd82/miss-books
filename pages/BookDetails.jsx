@@ -71,6 +71,7 @@ export class BookDetails extends React.Component {
   };
 
   render() {
+    
     const { book } = this.state;
     if (!book) return <h1>Loading</h1>;
     const formattedPrice = utilService.getPriceCurrency(book);
@@ -91,10 +92,9 @@ export class BookDetails extends React.Component {
         </div>
         <div className="more-details">
           <h1 className="title">{book.title}</h1>
-          <p className="sub-title">{book.subtitle}</p>
+          <p className="sub-title" dangerouslySetInnerHTML={{__html: book.subtitle}}></p>
           <p className="author">
-            By:{" "}
-            {!book.authors && 'Unknown'}
+            By: {!book.authors && "Unknown"}
             {book.authors &&
               book.authors.map((author) => {
                 return author + " ";
