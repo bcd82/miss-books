@@ -43,6 +43,7 @@
     font-weight: bold;
     border-radius: 50%;
     font-size:1rem;
+    padding:2px 6px;
     margin-inline-start: 20px;
     cursor:pointer
 }
@@ -56,5 +57,8 @@
     .book-add .search-list li { 
         font-size:1.5rem;
         margin-top:10px;
+    }
+    .book-add .search-list li button{ 
+        font-size:1rem;
     }
 }
