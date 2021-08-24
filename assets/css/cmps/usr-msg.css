@@ -1,0 +1,7 @@
+.user-msg { 
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background-color:rgb(50, 50, 190);
+    color:white;
+}

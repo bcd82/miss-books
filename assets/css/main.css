@@ -1,5 +1,6 @@
 @import './base.css';
 @import './pages/book-add.css';
+@import './cmps/usr-msg.css';
 /* 
 * {
     box-sizing: border-box;

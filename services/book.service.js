@@ -12,6 +12,8 @@ export const bookService = {
 }
 
 const KEY = 'booksDb';
+const DEFAULT_BOOK_IMGURL = 'https://ravenspacepublishing.org/wp-content/uploads/2019/04/default-book.jpg'
+
 const BOOKS = [
   {
     "id": "OXeMG8wNskc",
@@ -523,7 +525,7 @@ function addGoogleBook(book) {
     description: book.volumeInfo.description,
     pageCount: book.volumeInfo.pageCount,
     categories: book.volumeInfo.categories,
-    thumbnail: book.volumeInfo.imageLinks.thumbnail,
+    thumbnail: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail :  DEFAULT_BOOK_IMGURL,
     language: book.volumeInfo.language,
     listPrice: {
       amount: utilService.getRandomIntInclusive(15, 200),
