@@ -15,12 +15,11 @@ export class BookDetails extends React.Component {
   componentDidMount = () => {
     this.loadBook();
   };
-  
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.match.params.bookId !== this.props.match.params.bookId) {
-      this.loadBook()
+      this.loadBook();
     }
-    
   }
   onAddReview = (ev, review) => {
     ev.preventDefault();
@@ -85,6 +84,21 @@ export class BookDetails extends React.Component {
 
     return (
       <section className="book-details main-layout">
+        <div className="bottom-btns">
+            <Link to={`/book/${bookService.getDiffBookId(book.id, -1)}`}>
+          <button className="back-btn">
+              Previous Book
+          </button>
+            </Link>
+          <button className="back-btn" onClick={this.onBack}>
+            Back
+          </button>
+            <Link to={`/book/${bookService.getDiffBookId(book.id, 1)}`}>
+          <button className="back-btn">
+              Next Book
+          </button>
+            </Link>
+        </div>
         <div className="details-img">
           {book.listPrice.isOnSale && (
             <p className=" reading-type sale">ON-SALE</p>
@@ -93,12 +107,6 @@ export class BookDetails extends React.Component {
             <p className="reading-type">{this.getReadingType()}</p>
           )}
           <img src={book.thumbnail}></img>
-          <button className="back-btn" onClick={this.onBack}>
-            Back
-          </button>
-          <Link to={`/book/${bookService.getNextBookId(book.id)}`}>
-            Next Car
-          </Link>
         </div>
         <div className="more-details">
           <h1 className="title">{book.title}</h1>
@@ -136,9 +144,11 @@ export class BookDetails extends React.Component {
             onClickMore={this.onToggleTxt}
           />
         </div>
+
         <div className="add-review-box">
           <ReviewAdd book={book} onSubmit={this.onAddReview} />
         </div>
+
         <div className="reviews-container">
           {!book.reviews || !book.reviews.length ? (
             <p> No reviews yet..</p>

@@ -243,7 +243,16 @@ input::placeholder {
     text-decoration: underline;
     cursor: pointer;
 }
+.bottom-btns { 
+    display:flex;
+    width:100%;
+    justify-content: space-between;
 
+}
+.bottom-btns a{ 
+    color:white;
+    text-decoration: none;
+}
 .book-details .back-btn {
     width: fit-content;
     border: none;

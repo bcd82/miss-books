@@ -8,7 +8,7 @@ export const bookService = {
   deleteReview,
   addReview,
   getBookById,
-  getNextBookId
+  getDiffBookId
 }
 
 const KEY = 'booksDb';
@@ -485,10 +485,10 @@ function addReview(bookId, review) {
     .then((book) => {
       book.reviews ? book.reviews.unshift(review) : book.reviews = [review];
       _saveBooksToStorage()
-      
+
     }
     )
-    return Promise.resolve()
+  return Promise.resolve()
 }
 
 function deleteReview(reviewIdx, bookId) {
@@ -497,7 +497,7 @@ function deleteReview(reviewIdx, bookId) {
       book.reviews.splice(reviewIdx, 1);
       _saveBooksToStorage();
     })
-    return Promise.resolve()
+  return Promise.resolve()
 }
 
 function _getBooks() {
@@ -525,7 +525,7 @@ function addGoogleBook(book) {
     description: book.volumeInfo.description,
     pageCount: book.volumeInfo.pageCount,
     categories: book.volumeInfo.categories,
-    thumbnail: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail :  DEFAULT_BOOK_IMGURL,
+    thumbnail: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : DEFAULT_BOOK_IMGURL,
     language: book.volumeInfo.language,
     listPrice: {
       amount: utilService.getRandomIntInclusive(15, 200),
@@ -538,9 +538,10 @@ function addGoogleBook(book) {
   return Promise.resolve(newBook)
 }
 
-function getNextBookId(bookId) { 
+function getDiffBookId(bookId, diff) {
   const bookIdx = gBooks.findIndex(book => book.id === bookId)
-  let nextBookIdx = bookIdx + 1
+  let nextBookIdx = bookIdx + (diff)
   if (nextBookIdx === gBooks.length) nextBookIdx = 0
+  if (nextBookIdx === -1) nextBookIdx = gBooks.length - 1
   return gBooks[nextBookIdx].id
 }
