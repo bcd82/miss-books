@@ -276,7 +276,6 @@ textarea {
 .reviews-container {
     border-top: 2px solid rgb(17, 107, 143);
     width: 100%;
-    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     align-items: center;
