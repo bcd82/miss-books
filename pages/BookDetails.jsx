@@ -18,14 +18,6 @@ export class BookDetails extends React.Component {
   onAddReview = (ev,review) =>{
     ev.preventDefault()
     bookService.addReview(this.state.book.id,review)
-    // let newReviews
-    // if(!this.state.book.reviews) { 
-    //   newReviews =[]
-    // } else { 
-    //   newReviews = this.state.book.reviews.slice()
-    // }
-    // newReviews.unshift(review)
-    // this.setState(prevState => ({book:{...prevState.book,reviews:newReviews}}))
     this.loadBook()
 
 }
