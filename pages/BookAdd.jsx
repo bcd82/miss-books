@@ -42,6 +42,7 @@ export class BookAdd extends React.Component {
             value={query}
             name="search"
             onChange={this.handleChange}
+            autoFocus
           />
           <button>Search</button>
         </form>
@@ -51,7 +52,7 @@ export class BookAdd extends React.Component {
             {books &&
               books.map((book, idx) => (
                 <li key={idx}>
-                  {book.volumeInfo.title + '           '}
+                  {book.volumeInfo.title}
                   <button onClick={() => this.onAddBook(idx)}> + </button>
                 </li>
               ))}

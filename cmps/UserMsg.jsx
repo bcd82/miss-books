@@ -36,6 +36,7 @@ export class UserMsg extends React.Component {
     if (!msg) return <React.Fragment></React.Fragment>
     return (
       <section className="user-msg">
+          <img src="./assets/img/book-icon-large.png"/>
         <h1>{msg.txt}</h1>
         <Link to={`/book/${msg.id}`}>check it out here</Link>
         <button onClick={this.onCloseMsg}>X</button>
