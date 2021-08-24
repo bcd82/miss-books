@@ -18,7 +18,7 @@ export class About extends React.Component {
   };
 
   getImageToShow = () => {
-    return this.imgUrls[this.state.shownImg]
+    return this.imgUrls[this.state.shownImg];
   };
 
   componentDidMount() {
@@ -34,10 +34,7 @@ export class About extends React.Component {
       <section className="about">
         <div className="about-container main-layout">
           <h1>About Us</h1>
-          <img
-            src={this.getImageToShow()}
-            className="about-img"
-          ></img>
+          <img src={this.getImageToShow()} className="about-img"></img>
           <div className="text-container">
             <h2>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.

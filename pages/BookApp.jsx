@@ -17,7 +17,6 @@ export class BookApp extends React.Component {
     bookService.query(this.state.filterBy).then((books) => {
       this.setState({ books });
     });
-
   };
 
   onSetFilter = (filterBy) => {
@@ -30,11 +29,11 @@ export class BookApp extends React.Component {
 
   render() {
     const { books } = this.state;
-    if(!books) return <div>Loading...</div>
+    if (!books) return <div>Loading...</div>;
     return (
       <section className="book-app main-layout">
-            <BookFilter onSetFilter={this.onSetFilter} />
-            <BookList books={books} onSelectBook={this.onSelectBook} />
+        <BookFilter onSetFilter={this.onSetFilter} />
+        <BookList books={books} onSelectBook={this.onSelectBook} />
       </section>
     );
   }

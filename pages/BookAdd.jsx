@@ -1,7 +1,6 @@
 import { bookService } from "../services/book.service.js";
 import { googleBooksService } from "../services/google.books.service.js";
-import { eventBusService } from "../services/event.bus.service.js"
-
+import { eventBusService } from "../services/event.bus.service.js";
 
 export class BookAdd extends React.Component {
   state = {
@@ -25,10 +24,12 @@ export class BookAdd extends React.Component {
   };
 
   onAddBook = (idx) => {
-    bookService.addGoogleBook(this.state.books[idx])
-    .then((book)=> {
-      eventBusService.emit('user-msg',{txt:`${book.title} added to your books!`,id:book.id})
-     })
+    bookService.addGoogleBook(this.state.books[idx]).then((book) => {
+      eventBusService.emit("user-msg", {
+        txt: `${book.title} added to your books!`,
+        id: book.id,
+      });
+    });
   };
   render() {
     const { books, query } = this.state;
