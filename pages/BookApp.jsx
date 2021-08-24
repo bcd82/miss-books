@@ -10,12 +10,14 @@ export class BookApp extends React.Component {
 
   componentDidMount() {
     this.loadBooks();
+
   }
 
   loadBooks = () => {
     bookService.query(this.state.filterBy).then((books) => {
       this.setState({ books });
     });
+
   };
 
   onSetFilter = (filterBy) => {
@@ -27,6 +29,8 @@ export class BookApp extends React.Component {
   };
 
   render() {
+    console.log(axios)
+
     const { books } = this.state;
     if(!books) return <div>Loading...</div>
     return (
