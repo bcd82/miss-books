@@ -66,8 +66,9 @@ export class BookDetails extends React.Component {
 
   getTextForBookYears = () => {
     const thisYear = new Date(Date.now()).getFullYear();
-    if (thisYear - this.state.book.publishedDate >= 10) return "Veteran Book";
-    if (thisYear - this.state.book.publishedDate <= 1) return "New Book";
+    const publishYear = +(this.state.book.publishedDate.substring(0,4))
+    if (thisYear - publishYear >= 10) return "Veteran Book";
+    if (thisYear - publishYear <= 1) return "New Book";
   };
 
   getReadingType = () => {
@@ -115,7 +116,7 @@ export class BookDetails extends React.Component {
               })}
           </p>
           <p className="publish-date">
-            Year: {book.publishedDate} {this.getTextForBookYears()}
+            Published on: {book.publishedDate} {this.getTextForBookYears()}
           </p>
           <p className={`price ${this.getPriceClass()}`}>
             Price: {formattedPrice}{" "}
