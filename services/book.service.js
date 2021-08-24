@@ -8,7 +8,7 @@ export const bookService = {
   deleteReview,
   addReview,
   getBookById,
-  // updateBook
+  getNextBookId
 }
 
 const KEY = 'booksDb';
@@ -20,7 +20,7 @@ const BOOKS = [
     "title": "metus hendrerit",
     "subtitle": "mi est eros convallis auctor arcu dapibus himenaeos",
     "authors": [
-      "Barbara Cartland",
+      "Barbara Booktland",
     ],
     "publishedDate": 2021,
     "description": "placerat nisi sodales suscipit tellus tincidunt mauris elit sit luctus interdum ad dictum platea vehicula conubia fermentum habitasse congue suspendisse",
@@ -42,7 +42,7 @@ const BOOKS = [
     "title": "morbi",
     "subtitle": "lorem euismod dictumst inceptos mi",
     "authors": [
-      "Barbara Cartland"
+      "Barbara Booktland"
     ],
     "publishedDate": 1978,
     "description": "aliquam pretium lorem laoreet etiam odio cubilia iaculis placerat aliquam tempor nisl auctor",
@@ -538,19 +538,9 @@ function addGoogleBook(book) {
   return Promise.resolve(newBook)
 }
 
-
-// function deleteBook(bookId) {
-    //     var bookIdx = gBooks.findIndex(function (book) {
-        //         return bookId === book.id
-        //     })
-        //     gBooks.splice(bookIdx, 1)
-//     _saveBooksToStorage();
-// }
-
-// function addBook(title, speed) {
-//     var book = _createBook(title, speed)
-//     gBooks.unshift(book)
-//     _saveBooksToStorage();
-// }
-
-
+function getNextBookId(bookId) { 
+  const bookIdx = gBooks.findIndex(book => book.id === bookId)
+  let nextBookIdx = bookIdx + 1
+  if (nextBookIdx === gBooks.length) nextBookIdx = 0
+  return gBooks[nextBookIdx].id
+}

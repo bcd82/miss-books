@@ -4,6 +4,8 @@ import { utilService } from "../services/util.service.js";
 import { ReviewAdd } from "../cmps/ReviewAdd.jsx";
 import { Review } from "../cmps/Review.jsx";
 
+const { Link } = ReactRouterDOM;
+
 export class BookDetails extends React.Component {
   state = {
     isLongTxtShown: false,
@@ -13,7 +15,13 @@ export class BookDetails extends React.Component {
   componentDidMount = () => {
     this.loadBook();
   };
-
+  
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.bookId !== this.props.match.params.bookId) {
+      this.loadBook()
+    }
+    
+  }
   onAddReview = (ev, review) => {
     ev.preventDefault();
     bookService
@@ -71,7 +79,6 @@ export class BookDetails extends React.Component {
   };
 
   render() {
-    
     const { book } = this.state;
     if (!book) return <h1>Loading</h1>;
     const formattedPrice = utilService.getPriceCurrency(book);
@@ -89,10 +96,16 @@ export class BookDetails extends React.Component {
           <button className="back-btn" onClick={this.onBack}>
             Back
           </button>
+          <Link to={`/book/${bookService.getNextBookId(book.id)}`}>
+            Next Car
+          </Link>
         </div>
         <div className="more-details">
           <h1 className="title">{book.title}</h1>
-          <p className="sub-title" dangerouslySetInnerHTML={{__html: book.subtitle}}></p>
+          <p
+            className="sub-title"
+            dangerouslySetInnerHTML={{ __html: book.subtitle }}
+          ></p>
           <p className="author">
             By: {!book.authors && "Unknown"}
             {book.authors &&
