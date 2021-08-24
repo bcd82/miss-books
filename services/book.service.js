@@ -483,6 +483,7 @@ function addReview(bookId, review) {
     .then((book) => {
       book.reviews ? book.reviews.unshift(review) : book.reviews = [review];
       _saveBooksToStorage()
+      return Promise.resolve()
     })
 }
 function deleteReview(reviewIdx,bookId){
@@ -491,6 +492,7 @@ function deleteReview(reviewIdx,bookId){
   .then (book => {
     book.reviews.splice(reviewIdx,1);
     _saveBooksToStorage();
+    return Promise.resolve()
   })
 }
 function _getBooks() {
