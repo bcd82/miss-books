@@ -96,18 +96,6 @@
     text-decoration: none;
 }
 
-.book-details .back-btn {
-    width: fit-content;
-    border: none;
-    background-color: rgb(62, 62, 158);
-    color: white;
-    padding: 10px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: .25em;
-    box-shadow: 0 0em .2em rgba(0, 0, 0, 0.637);
-}
-
 .green {
     color: green;
     font-weight: bold;

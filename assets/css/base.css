@@ -30,7 +30,24 @@ input::placeholder {
     margin: 0 auto;
 }
 
+button { 
+    filter:brightness(1);
+    transform:translateY(0);
+    transition: filter .2s ease-out, transform .2s ease-out;
+    border: none;
+    background-color: rgb(62, 62, 158);
+    border:1px solid rgba(255, 255, 255, 0.397);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: .5em;
+    box-shadow: 0 0em .2em rgba(0, 0, 0, 0.637);
+}
+button:hover { 
+    filter:brightness(1.2);
+    transform:translateY(-2px)
 
+}
 
 @media screen and (min-width:800px) {
     body {
