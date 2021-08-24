@@ -22,3 +22,23 @@
 .book-add .search-list { 
     width:100%;
 }
+
+.book-add .search-list ul { 
+    list-style-type: square;
+}
+.book-add .search-list li { 
+    font-size:1.5rem;
+    margin-top:10px;
+}
+.book-add .search-list li button{ 
+    background-color: rgba(255, 255, 255, 0.13);
+    border:1px solid white;
+    color:white;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size:1rem;
+    margin-inline-start: 20px;
+    cursor:pointer
+    
+    
+}

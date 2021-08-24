@@ -51,8 +51,8 @@ export class BookAdd extends React.Component {
             {books &&
               books.map((book, idx) => (
                 <li key={idx}>
-                  {book.volumeInfo.title}{" "}
-                  <button onClick={() => this.onAddBook(idx)}>add</button>
+                  {book.volumeInfo.title + '           '}
+                  <button onClick={() => this.onAddBook(idx)}> + </button>
                 </li>
               ))}
           </ul>

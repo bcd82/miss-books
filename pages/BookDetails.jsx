@@ -84,20 +84,16 @@ export class BookDetails extends React.Component {
 
     return (
       <section className="book-details main-layout">
-        <div className="bottom-btns">
-            <Link to={`/book/${bookService.getDiffBookId(book.id, -1)}`}>
-          <button className="back-btn">
-              Previous Book
-          </button>
-            </Link>
+        <div className="top-btns">
+          <Link to={`/book/${bookService.getDiffBookId(book.id, -1)}`}>
+            <button className="back-btn">Previous Book</button>
+          </Link>
           <button className="back-btn" onClick={this.onBack}>
             Back
           </button>
-            <Link to={`/book/${bookService.getDiffBookId(book.id, 1)}`}>
-          <button className="back-btn">
-              Next Book
-          </button>
-            </Link>
+          <Link to={`/book/${bookService.getDiffBookId(book.id, 1)}`}>
+            <button className="back-btn">Next Book</button>
+          </Link>
         </div>
         <div className="details-img">
           {book.listPrice.isOnSale && (
@@ -110,10 +106,7 @@ export class BookDetails extends React.Component {
         </div>
         <div className="more-details">
           <h1 className="title">{book.title}</h1>
-          <p
-            className="sub-title"
-            dangerouslySetInnerHTML={{ __html: book.subtitle }}
-          ></p>
+          <p className="sub-title">{book.subtitle}</p>
           <p className="author">
             By: {!book.authors && "Unknown"}
             {book.authors &&

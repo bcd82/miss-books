@@ -519,12 +519,12 @@ function addGoogleBook(book) {
   const newBook = {
     id: utilService.makeId(),
     title: book.volumeInfo.title,
-    subtitle: book.searchInfo.textSnippet ? book.searchInfo.textSnippet : '',
+    subtitle: book.volumeInfo.subtitle,
     authors: book.volumeInfo.authors,
     publishedDate: book.volumeInfo.publishedDate,
     description: book.volumeInfo.description,
     pageCount: book.volumeInfo.pageCount,
-    categories: book.volumeInfo.categories,
+    categories: book.volumeInfo.categories || ['uncategorized'],
     thumbnail: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : DEFAULT_BOOK_IMGURL,
     language: book.volumeInfo.language,
     listPrice: {
