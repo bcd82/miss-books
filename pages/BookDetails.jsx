@@ -66,7 +66,10 @@ export class BookDetails extends React.Component {
 
   getTextForBookYears = () => {
     const thisYear = new Date(Date.now()).getFullYear();
-    const publishYear = +(this.state.book.publishedDate.substring(0,4))
+    let publishYear = this.state.book.publishedDate;
+    if (typeof this.state.book.publishedDate === 'string')
+      publishYear = +this.state.book.publishedDate.substring(0, 4);
+
     if (thisYear - publishYear >= 10) return "Veteran Book";
     if (thisYear - publishYear <= 1) return "New Book";
   };
