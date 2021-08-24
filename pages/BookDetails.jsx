@@ -18,19 +18,16 @@ export class BookDetails extends React.Component {
   onAddReview = (ev,review) =>{
     ev.preventDefault()
     bookService.addReview(this.state.book.id,review)
-    this.loadBook()
-    .then (
       this.loadBook()
-    )
+
 
 }
 
 onDeleteReview = (reviewIdx,bookId) => {
   console.log(reviewIdx,bookId)
   bookService.deleteReview(reviewIdx,bookId)
-  .then (
     this.loadBook()
-  )
+  
 }
 
 

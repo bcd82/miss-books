@@ -1,0 +1,24 @@
+.book-add { 
+    background-color: rgba(0, 0, 0, 0.753);
+    color:white;
+    padding:40px;
+    border-radius:12px;
+    display:flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
+.book-add h1{ 
+    font-size:1.5rem;
+}
+.book-add form {
+    width:100%;
+    display: flex;
+    gap:10px;
+}
+.book-add form input{
+    padding:10px 10px;
+
+}
+.book-add .search-list { 
+    width:100%;
+}

@@ -4,7 +4,7 @@ import { storageService } from './storage.service.js'
 
 export const bookService = {
   query,
-  // addBook,
+  addGoogleBook,
   deleteReview,
   addReview,
   getBookById,
@@ -483,18 +483,21 @@ function addReview(bookId, review) {
     .then((book) => {
       book.reviews ? book.reviews.unshift(review) : book.reviews = [review];
       _saveBooksToStorage()
-      return Promise.resolve()
-    })
+      
+    }
+    )
 }
-function deleteReview(reviewIdx,bookId){
+
+function deleteReview(reviewIdx, bookId) {
   console.log('i delete things')
   getBookById(bookId)
-  .then (book => {
-    book.reviews.splice(reviewIdx,1);
-    _saveBooksToStorage();
-    return Promise.resolve()
-  })
+    .then(book => {
+      book.reviews.splice(reviewIdx, 1);
+      _saveBooksToStorage();
+    })
+    
 }
+
 function _getBooks() {
   let books = storageService.loadFromStorage(KEY)
   if (!books || !books.length) {
@@ -506,12 +509,35 @@ function _getBooks() {
   _saveBooksToStorage();
 }
 
-
 function _saveBooksToStorage() {
   storageService.saveToStorage(KEY, gBooks)
 }
 
 
+function addGoogleBook(book) {
+  console.log(book)
+  const newBook = {
+    id: utilService.makeId(),
+    title: book.volumeInfo.title,
+    subtitle: book.searchInfo.textSnippet,
+    authors: book.volumeInfo.authors,
+    publishedDate: book.volumeInfo.publishedDate,
+    description: book.volumeInfo.description,
+    pageCount: book.volumeInfo.pageCount,
+    categories: book.volumeInfo.categories,
+    thumbnail: book.volumeInfo.imageLinks.thumbnail,
+    language: book.volumeInfo.language,
+    listPrice: {
+      amount: utilService.getRandomIntInclusive(15, 200),
+      currencyCode: 'USD',
+      isOnSale: Math.random() > 0.5 ? true : false
+    }
+  }
+  gBooks.unshift(newBook);
+  _saveBooksToStorage()
+  console.log(newBook)
+  return Promise.resolve(newBook)
+}
 
 
 // function deleteBook(bookId) {

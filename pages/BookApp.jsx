@@ -1,6 +1,7 @@
 import { bookService } from "../services/book.service.js";
 import { BookList } from "../cmps/BookList.jsx";
 import { BookFilter } from "../cmps/BookFilter.jsx";
+import { googleBooksService } from "../services/google.books.service.js";
 
 export class BookApp extends React.Component {
   state = {
@@ -10,7 +11,6 @@ export class BookApp extends React.Component {
 
   componentDidMount() {
     this.loadBooks();
-
   }
 
   loadBooks = () => {
@@ -29,8 +29,6 @@ export class BookApp extends React.Component {
   };
 
   render() {
-    console.log(axios)
-
     const { books } = this.state;
     if(!books) return <div>Loading...</div>
     return (
